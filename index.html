@@ -44,7 +44,7 @@
             transform: translateY(0);
         }
 
-        /* NEW: Styles for the dynamic header behavior */
+        /* Styles for the dynamic header behavior */
         .header {
             position: fixed;
             width: 100%;
@@ -55,28 +55,55 @@
         .header-hidden {
             transform: translateY(-100%);
         }
+
+        /* Custom styles for the mobile menu transition */
+        .nav-links {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-in-out;
+            background-color: #fff;
+        }
+        .nav-links.is-open {
+            max-height: 500px; /* A large enough value to accommodate all links */
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
 
     <!-- Header Section -->
-    <!-- Removed 'sticky top-0 z-50' and added a new 'header' class for JS to control -->
     <header class="bg-white shadow-sm header">
-        <nav class="container mx-auto px-4 py-4 flex flex-col md:flex-row items-center justify-between">
-            <!-- Logo area -->
+        <nav class="container mx-auto px-4 py-4 flex items-center justify-between">
+            <!-- Mobile Menu Button - now on the far left -->
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-gray-600 hover:text-cyan-600 focus:outline-none">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-4 6h4"/>
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Logo area - now on the far right -->
             <div class="flex items-center space-x-2">
                 <!-- YOUR LOGO LINK -->
                 <img src="https://i.imgur.com/DBoRIEP.png" alt="Boss Vending Logo" class="w-12 h-12 rounded-full">
             </div>
-            <!-- Navigation Links -->
-            <!-- Updated classes for better mobile spacing and styling -->
-            <div class="mt-4 md:mt-0 flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-8">
-                <a href="#about" class="w-full text-center px-4 py-2 rounded-lg text-gray-600 hover:bg-gray-100 hover:text-cyan-600 transition duration-300">About Us</a>
+            
+            <!-- Desktop Navigation Links - now on the far right on larger screens -->
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#about" class="px-4 py-2 rounded-lg text-gray-600 hover:bg-gray-100 hover:text-cyan-600 transition duration-300">About</a>
+                <a href="#services" class="px-4 py-2 rounded-lg text-gray-600 hover:bg-gray-100 hover:text-cyan-600 transition duration-300">Services</a>
+                <a href="#contact" class="bg-cyan-500 text-white px-4 py-2 rounded-full hover:bg-cyan-600 transition duration-300">Contact</a>
+            </div>
+        </nav>
+        <!-- Mobile Navigation Links - now a full-width block below the main nav bar -->
+        <div id="nav-links" class="nav-links w-full md:hidden">
+            <div class="flex flex-col items-center space-y-4 py-4 px-4">
+                <a href="#about" class="w-full text-center px-4 py-2 rounded-lg text-gray-600 hover:bg-gray-100 hover:text-cyan-600 transition duration-300">About</a>
                 <a href="#services" class="w-full text-center px-4 py-2 rounded-lg text-gray-600 hover:bg-gray-100 hover:text-cyan-600 transition duration-300">Services</a>
                 <!-- The contact button remains styled as a button on all screen sizes -->
                 <a href="#contact" class="w-full text-center bg-cyan-500 text-white px-4 py-2 rounded-full hover:bg-cyan-600 transition duration-300">Contact</a>
             </div>
-        </nav>
+        </div>
     </header>
     
     <div>
@@ -93,10 +120,10 @@
             </a>
         </section>
 
-        <!-- About Us Section -->
+        <!-- About Section -->
         <section id="about" class="py-16 md:py-24 px-4 fade-in-section">
             <div class="container mx-auto max-w-4xl text-center">
-                <h2 class="text-3xl font-bold text-gray-900 section-title mb-10 mx-auto">About Us</h2>
+                <h2 class="text-3xl font-bold text-gray-900 section-title mb-10 mx-auto">About</h2>
                 <div class="bg-white p-8 rounded-lg shadow-lg">
                     <p class="text-lg text-gray-600 leading-relaxed">
                         Boss Vending is all about keeping it easy. We bring fresh, reliable vending all throughout New York. No broken machines, no boring snacks, no stress. We're stocked, cleaned, always ready, and set up with cashless payments so grabbing a snack or drink is quick and simple. Make that visit better, vend with Boss.
@@ -144,23 +171,30 @@
         <!-- Contact Section -->
         <section id="contact" class="py-16 md:py-24 px-4 fade-in-section">
             <div class="container mx-auto max-w-2xl text-center">
-                <h2 class="text-3xl font-bold text-gray-900 section-title mb-10 mx-auto">Get a Vending Machine</h2>
+                <h2 class="text-3xl font-bold text-gray-900 section-title mb-10 mx-auto">Contact</h2>
                 <p class="text-gray-600 mb-8">
                     Interested in adding a modern vending machine to your business or location? Contact us today to learn more about our services.
                 </p>
                 <div class="bg-white p-8 rounded-lg shadow-lg">
-                    <form action="https://formspree.io/f/mwpqjpgn" method="post" class="space-y-6">
+                    <!-- Form action and method for Formspree -->
+                    <!-- Change the URL below to your unique Formspree endpoint -->
+                    <form action="https://formspree.io/f/your-unique-id" method="post" class="space-y-6">
                         <div>
                             <label for="name" class="block text-sm font-medium text-gray-700 text-left">Full Name</label>
                             <input type="text" id="name" name="name" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-cyan-500 focus:border-cyan-500" required>
                         </div>
                         <div>
                             <label for="email" class="block text-sm font-medium text-gray-700 text-left">Email Address</label>
-                            <input type="email" id="email" name="email" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-cyan-500 focus:border-cyan-500" required>
+                            <input type="email" id="email" name="_replyto" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-cyan-500 focus:border-cyan-500" required>
                         </div>
                         <div>
                             <label for="message" class="block text-sm font-medium text-gray-700 text-left">Message</label>
-                            <textarea id="message" name="message" rows="4" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-cyan-500 focus:border-cyan-500" required></textarea>
+                            <!-- Added placeholder and maxlength for the character counter -->
+                            <textarea id="message" name="message" rows="4" maxlength="500" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-cyan-500 focus:border-cyan-500" placeholder="Please enter your message here (keep it concise)." required></textarea>
+                            <!-- Added a span to display the character count -->
+                            <div class="text-right text-sm text-gray-500 mt-1">
+                                <span id="char-count">0</span>/500
+                            </div>
                         </div>
                         <button type="submit" class="w-full bg-cyan-600 text-white font-semibold py-3 rounded-full shadow-lg hover:bg-cyan-700 transition duration-300">
                             Submit Inquiry
@@ -178,7 +212,7 @@
         </div>
     </footer>
 
-    <!-- JavaScript for the smooth scroll and fade-in effects -->
+    <!-- JavaScript for the smooth scroll, fade-in, and header/menu effects -->
     <script>
         // Smooth scroll function
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -219,23 +253,58 @@
             sections.forEach(section => {
                 observer.observe(section);
             });
+
+            // Character counter for the message box
+            const messageBox = document.getElementById('message');
+            const charCount = document.getElementById('char-count');
+            
+            messageBox.addEventListener('input', () => {
+                charCount.textContent = messageBox.value.length;
+            });
         });
 
-        // NEW: JavaScript for the dynamic header hide/show on scroll
+        // JavaScript for the dynamic header hide/show on scroll
         let lastScrollY = window.scrollY;
         const header = document.querySelector('.header');
+        
+        // Only enable the hiding behavior on mobile (or small screens)
+        const isMobile = () => window.innerWidth < 768;
 
         window.addEventListener('scroll', () => {
-            if (window.scrollY > lastScrollY && window.scrollY > 100) {
-                // Scrolling down, hide the header
-                header.classList.add('header-hidden');
+            if (isMobile()) {
+                if (window.scrollY > lastScrollY && window.scrollY > 100) {
+                    // Scrolling down, hide the header
+                    header.classList.add('header-hidden');
+                } else {
+                    // Scrolling up, show the header
+                    header.classList.remove('header-hidden');
+                }
             } else {
-                // Scrolling up, show the header
-                header.classList.remove('header-hidden');
+                 // On desktop, always show the header
+                 header.classList.remove('header-hidden');
             }
 
             lastScrollY = window.scrollY;
         });
+
+        // Mobile menu toggle
+        const menuButton = document.getElementById('mobile-menu-button');
+        const navLinks = document.getElementById('nav-links');
+        const navItems = navLinks.querySelectorAll('a');
+
+        // Check if elements exist before adding event listener
+        if (menuButton && navLinks) {
+            menuButton.addEventListener('click', () => {
+                navLinks.classList.toggle('is-open');
+            });
+
+            // Add event listener to each nav item to close the menu
+            navItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    navLinks.classList.remove('is-open');
+                });
+            });
+        }
     </script>
 
 </body>
