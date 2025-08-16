@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Boss Vending - The Best Break</title>
+    <title>The Boss of Vending</title>
     <!-- Use Tailwind CSS for modern, responsive styling -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Use the Inter font from Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Antique+B1&display=swap" rel="stylesheet">
     
-    <!-- FAVICON: Add a placeholder favicon link. You should replace this URL with your own favicon. -->
-    <!-- You can generate one from your logo at a site like favicon.io -->
-    <link rel="icon" type="image/png" href="https://placehold.co/32x32/06b6d4/ffffff?text=B">
+    <!-- NEW: FAVICON LINK -->
+    <!-- Replace the href below with the URL of your own favicon file -->
+    <link rel="icon" type="image/png" href="https://i.imgur.com/DBoRIEP.png">
     
     <style>
         body {
@@ -31,7 +31,7 @@
             border-radius: 9999px;
         }
 
-        /* NEW: CSS for the fade-in effect */
+        /* CSS for the fade-in effect */
         .fade-in-section {
             opacity: 0;
             transform: translateY(20px);
@@ -51,8 +51,9 @@
         <nav class="container mx-auto px-4 py-4 flex flex-col md:flex-row items-center justify-between">
             <!-- Logo area -->
             <div class="flex items-center space-x-2">
-                <!-- Placeholder for the Boss Vending logo. Replace this URL with your actual image host URL. -->
-                <img src="https://placehold.co/100x100/e2e8f0/1e293b?text=BOSS" alt="Boss Vending Logo" class="w-12 h-12 rounded-full">
+                <!-- NEW: YOUR LOGO LINK -->
+                <!-- Replace the src below with the URL of your own logo file -->
+                <img src="https://i.imgur.com/DBoRIEP.png" alt="Boss Vending Logo" class="w-12 h-12 rounded-full">
                 <span class="text-xl font-bold text-gray-900">Boss Vending LLC</span>
             </div>
             <!-- Navigation Links -->
@@ -64,8 +65,7 @@
         </nav>
     </header>
     
-    <!-- NEW: Wrap main content in a div for easier fade-in handling -->
-    <div id="content">
+    <div>
         <!-- Hero Section -->
         <section class="bg-gray-100 py-20 md:py-32 text-center rounded-b-lg shadow-inner mx-4 mt-4 fade-in-section">
             <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight mb-4">
@@ -164,8 +164,26 @@
         </div>
     </footer>
 
-    <!-- NEW: JavaScript for the fade-in effect on scroll -->
+    <!-- JavaScript for the smooth scroll and fade-in effects -->
     <script>
+        // NEW: Smooth scroll function
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 60, // Adjust for fixed header
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // JavaScript for the fade-in effect on scroll
         document.addEventListener('DOMContentLoaded', () => {
             const sections = document.querySelectorAll('.fade-in-section');
 
