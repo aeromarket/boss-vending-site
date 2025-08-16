@@ -20,6 +20,7 @@
             font-family: 'Shippori Antique B1', sans-serif;
             background-color: #f8fafc;
         }
+        
         /* Custom styles for the section titles */
         .section-title::after {
             content: '';
@@ -30,7 +31,7 @@
             margin-top: 8px;
             border-radius: 9999px;
         }
-
+        
         /* CSS for the fade-in effect */
         .fade-in-section {
             opacity: 0;
@@ -42,12 +43,25 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* NEW: Styles for the dynamic header behavior */
+        .header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 50;
+            transition: transform 0.3s ease-in-out;
+        }
+        .header-hidden {
+            transform: translateY(-100%);
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
 
     <!-- Header Section -->
-    <header class="bg-white shadow-sm sticky top-0 z-50">
+    <!-- Removed 'sticky top-0 z-50' and added a new 'header' class for JS to control -->
+    <header class="bg-white shadow-sm header">
         <nav class="container mx-auto px-4 py-4 flex flex-col md:flex-row items-center justify-between">
             <!-- Logo area -->
             <div class="flex items-center space-x-2">
@@ -60,7 +74,7 @@
                 <a href="#about" class="w-full text-center px-4 py-2 rounded-lg text-gray-600 hover:bg-gray-100 hover:text-cyan-600 transition duration-300">About Us</a>
                 <a href="#services" class="w-full text-center px-4 py-2 rounded-lg text-gray-600 hover:bg-gray-100 hover:text-cyan-600 transition duration-300">Services</a>
                 <!-- The contact button remains styled as a button on all screen sizes -->
-                <a href="#contact" class="w-full text-center bg-cyan-500 text-white px-4 py-2 rounded-full hover:bg-cyan-600 transition duration-300">Contact Us</a>
+                <a href="#contact" class="w-full text-center bg-cyan-500 text-white px-4 py-2 rounded-full hover:bg-cyan-600 transition duration-300">Contact</a>
             </div>
         </nav>
     </header>
@@ -205,6 +219,22 @@
             sections.forEach(section => {
                 observer.observe(section);
             });
+        });
+
+        // NEW: JavaScript for the dynamic header hide/show on scroll
+        let lastScrollY = window.scrollY;
+        const header = document.querySelector('.header');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > lastScrollY && window.scrollY > 100) {
+                // Scrolling down, hide the header
+                header.classList.add('header-hidden');
+            } else {
+                // Scrolling up, show the header
+                header.classList.remove('header-hidden');
+            }
+
+            lastScrollY = window.scrollY;
         });
     </script>
 
