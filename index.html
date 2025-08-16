@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boss Vending - The Best Break</title>
+    <!-- Use Tailwind CSS for modern, responsive styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Use the Inter font from Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        /* Custom styles for the section titles */
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: #06b6d4; /* Tailwind's cyan-500 */
+            margin-top: 8px;
+            border-radius: 9999px;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Header Section -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <nav class="container mx-auto px-4 py-4 flex flex-col md:flex-row items-center justify-between">
+            <!-- Logo area -->
+            <div class="flex items-center space-x-2">
+                <!-- Placeholder for the Boss Vending logo. Replace this URL with your actual image host URL. -->
+                <img src="https://placehold.co/100x100/e2e8f0/1e293b?text=BOSS" alt="Boss Vending Logo" class="w-12 h-12 rounded-full">
+                <span class="text-xl font-bold text-gray-900">Boss Vending LLC</span>
+            </div>
+            <!-- Navigation Links -->
+            <div class="mt-4 md:mt-0 md:space-x-8 space-y-2 md:space-y-0 text-center md:text-left">
+                <a href="#about" class="text-gray-600 hover:text-cyan-600 transition duration-300">About Us</a>
+                <a href="#services" class="text-gray-600 hover:text-cyan-600 transition duration-300">Services</a>
+                <a href="#contact" class="bg-cyan-500 text-white px-4 py-2 rounded-full hover:bg-cyan-600 transition duration-300">Contact Us</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <main>
+        <section class="bg-gray-100 py-20 md:py-32 text-center rounded-b-lg shadow-inner mx-4 mt-4">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight mb-4">
+                Your Break. <br class="md:hidden"> Powered by Boss.
+            </h1>
+            <p class="text-lg md:text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+                Providing modern, cashless vending solutions in Orange County, NY.
+            </p>
+            <a href="#contact" class="bg-cyan-600 text-white font-semibold px-8 py-3 rounded-full shadow-lg hover:bg-cyan-700 transition duration-300 transform hover:scale-105">
+                Get a Vending Machine
+            </a>
+        </section>
+
+        <!-- About Us Section -->
+        <section id="about" class="py-16 md:py-24 px-4">
+            <div class="container mx-auto max-w-4xl text-center">
+                <h2 class="text-3xl font-bold text-gray-900 section-title mb-10 mx-auto">About Us</h2>
+                <div class="bg-white p-8 rounded-lg shadow-lg">
+                    <p class="text-lg text-gray-600 leading-relaxed">
+                        At Boss Vending LLC, we're changing the vending game in Orange County, NY. We specialize in providing top-of-the-line vending services that prioritize convenience, variety, and reliability. We believe a great vending machine isn't just about snacks and drinks—it's about providing a seamless, hassle-free experience. From our cashless payment options to our meticulously stocked machines, we handle everything so you can offer a valuable amenity to your community without the work.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="bg-gray-100 py-16 md:py-24 px-4 rounded-lg shadow-inner mx-4">
+            <div class="container mx-auto">
+                <h2 class="text-3xl font-bold text-gray-900 section-title mb-10 mx-auto text-center">Our Services</h2>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Service Card 1 -->
+                    <div class="bg-white p-8 rounded-lg shadow-lg text-center">
+                        <div class="text-4xl text-cyan-500 mb-4">
+                            <!-- Placeholder icon for Snacks & Drinks -->
+                            <span class="inline-block" style="font-size: 3rem;">📦</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Snacks & Drinks</h3>
+                        <p class="text-gray-600">A wide selection of popular brands and healthy alternatives, tailored to your location's preferences.</p>
+                    </div>
+                    <!-- Service Card 2 -->
+                    <div class="bg-white p-8 rounded-lg shadow-lg text-center">
+                        <div class="text-4xl text-cyan-500 mb-4">
+                            <!-- Placeholder icon for Cashless Payments -->
+                            <span class="inline-block" style="font-size: 3rem;">💳</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Cashless Payments</h3>
+                        <p class="text-gray-600">Our machines accept all major credit cards, mobile pay, and digital wallets for ultimate convenience.</p>
+                    </div>
+                    <!-- Service Card 3 -->
+                    <div class="bg-white p-8 rounded-lg shadow-lg text-center">
+                        <div class="text-4xl text-cyan-500 mb-4">
+                            <!-- Placeholder icon for Reliable Service -->
+                            <span class="inline-block" style="font-size: 3rem;">🛠️</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Reliable Service</h3>
+                        <p class="text-gray-600">We monitor our machines remotely to ensure they are always fully stocked and in perfect working order.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-16 md:py-24 px-4">
+            <div class="container mx-auto max-w-2xl text-center">
+                <h2 class="text-3xl font-bold text-gray-900 section-title mb-10 mx-auto">Get a Vending Machine</h2>
+                <p class="text-gray-600 mb-8">
+                    Interested in adding a modern vending machine to your business or location? Contact us today to learn more about our services.
+                </p>
+                <div class="bg-white p-8 rounded-lg shadow-lg">
+                    <form action="#" method="POST" class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700 text-left">Full Name</label>
+                            <input type="text" id="name" name="name" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-cyan-500 focus:border-cyan-500" required>
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 text-left">Email Address</label>
+                            <input type="email" id="email" name="email" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-cyan-500 focus:border-cyan-500" required>
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700 text-left">Message</label>
+                            <textarea id="message" name="message" rows="4" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-cyan-500 focus:border-cyan-500" required></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-cyan-600 text-white font-semibold py-3 rounded-full shadow-lg hover:bg-cyan-700 transition duration-300">
+                            Submit Inquiry
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="bg-gray-900 text-gray-300 py-8 px-4 mt-8">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2024 Boss Vending LLC. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
